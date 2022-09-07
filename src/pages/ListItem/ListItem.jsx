@@ -5,8 +5,7 @@ import Header from "../../components/Headers/Header";
 import Description from "../../components/Description/Description";
 import Rating from "../../components/Rating/Rating";
 import Button from "../../components/Button/Button";
-import Comment from "../../components/Comment/Comment";
-import Form from "../../components/Forms/Form";
+import Comments from "../../components/Comment/Comments";
 
 export default function ListItem() {
   const { singleListing } = useContext(listingContext);
@@ -45,13 +44,11 @@ export default function ListItem() {
           <Button variant="outlined" submit={handleAddRating} />
         </div>
       </div>
-      <div className="commentContainer">
-        <Header variant="small" />
-        {comments.map((comment) => (
-          <Comment content={comment} />
-        ))}
-        <Form submit={submitComment} data={commentFormData} />
-      </div>
+      <Comments
+        comments={comments}
+        submit={submitComment}
+        data={commentFormData}
+      />
     </section>
   );
 }
